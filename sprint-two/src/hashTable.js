@@ -63,7 +63,6 @@ HashTable.prototype.checkSize = function() {
 
 HashTable.prototype.retrieve = function(k) { //O(1);
   var index = getIndexBelowMaxForKey(k, this._limit);
-  console.log(this)
   if (this._storage[index]) {
     for (var i = 0; i < this._storage[index].length; i++) {
       if (this._storage[index][i][0] === k) {

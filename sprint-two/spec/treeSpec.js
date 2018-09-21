@@ -41,4 +41,21 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should detect the parent property', function() {
+    tree.addChild(5)
+    tree.children[0].addChild(6);
+    expect(tree.children[0].children[0].parent.value).to.eql(5);
+  })
+
+  it('traverse', function() {
+    var arr = [];
+    var callback = function(e) {
+      arr.push(e);
+    }
+    tree.addChild(5);
+    tree.children[0].addChild[6];
+    tree.traverse(5, callback);
+    expect(arr).to.eql([5,6])
+  })
+
 });
