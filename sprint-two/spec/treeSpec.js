@@ -53,9 +53,18 @@ describe('tree', function() {
       arr.push(e);
     }
     tree.addChild(5);
-    tree.children[0].addChild[6];
-    tree.traverse(5, callback);
+    tree.children[0].addChild(6);
+    tree.traverse(callback);
     expect(arr).to.eql([5,6])
+  })
+
+  it('should remove parent', function() {
+    tree.addChild(5);
+    tree.children[0].addChild(6);
+    var child = tree.children[0].children[0];
+    child.removeParent();
+    expect(child.parent).to.eql(undefined);
+    expect(tree.children[0].children).to.eql([]);
   })
 
 });
