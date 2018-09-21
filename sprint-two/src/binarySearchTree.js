@@ -2,9 +2,11 @@ var BinarySearchTree = function(value) {
   this.value = value;
   this.left = {};
   this.right = {};
+  this.storage = [value];
 };
 
 BinarySearchTree.prototype.insert = function(value) {
+  this.storage.push(value);
   if (this.value > value) {
     if(this.left.value) {
       this.left.insert(value);
@@ -38,10 +40,7 @@ BinarySearchTree.prototype.contains = function(value) {
   return found;
 }
 BinarySearchTree.prototype.depthFirstLog = function(func) {
-  if(Object.keys(this.right).length !== 0){
-    func(this.right.value);
-  }
-  
+  this.storage.forEach(e => func(e));
 }
 
 
