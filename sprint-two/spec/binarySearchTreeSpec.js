@@ -16,7 +16,7 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
     binarySearchTree.insert(6);
-    expect(binarySearchTree.left.right.value).to.equal(3);
+    expect(binarySearchTree.left.value).to.equal(3);
     expect(binarySearchTree.right.left.value).to.equal(6);
   });
 
@@ -35,7 +35,7 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
     binarySearchTree.depthFirstLog(func);
-    expect(array).to.eql([5, 2, 3, 7]);
+    expect(array).to.eql([3, 2, 5, 7]);
   });
 
   it('should use the breadthFirstLog', function() {
@@ -45,22 +45,31 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
     binarySearchTree.breadthFirstLog(func);
-    expect(array).to.eql([5, 2, 7, 3]);
+    expect(array).to.eql([3, 2, 5, 7]);
   })
 
   it('should be able to invoke height', function() {
     binarySearchTree.insert(1);
     binarySearchTree.insert(3);
     binarySearchTree.insert(4);
-    binarySearchTree.insert(5);
-    expect(binarySearchTree.getHeight()).to.eql(4);
+    binarySearchTree.insert(6);
+    expect(binarySearchTree.getHeight()).to.eql(3);
   })
 
   it('should be able to detect the imbalanceness', function() {
     binarySearchTree.insert(1);
     binarySearchTree.insert(3);
     binarySearchTree.insert(4);
-    binarySearchTree.insert(5);
-    expect(binarySearchTree.isBalanced()).to.eql(false);
+    binarySearchTree.insert(6);
+    expect(binarySearchTree.isBalanced()).to.eql(true);
+  })
+
+  it('should be able to rebalance itself', function() {
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(4);
+    binarySearchTree.insert(6);
+    expect(binarySearchTree.getHeight()).to.eql(3);
   })
 });
