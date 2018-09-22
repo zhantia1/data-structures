@@ -57,6 +57,7 @@ treeMethods.removeParent = function() {
   }
 }
 
+
 var extend = function(obj, methods) {
   for(var key in treeMethods) {
     obj[key] = methods[key];

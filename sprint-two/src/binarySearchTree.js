@@ -43,6 +43,39 @@ BinarySearchTree.prototype.depthFirstLog = function(func) {
   this.storage.forEach(e => func(e));
 }
 
+BinarySearchTree.prototype.breadthFirstLog = function(func) {
+  var queue = [];
+  if (this) {
+    queue.push(this);
+  }
+  while (queue.length > 0) {
+    var currentNode = queue[0];
+    if (currentNode.left.value) {
+      queue.push(currentNode.left);
+    }
+    if (currentNode.right.value) {
+      queue.push(currentNode.right);
+    }
+    var x = queue.shift();
+    func(x.value);   
+  }
+}
+
+BinarySearchTree.prototype.getHeight = function() {
+  if (this === null) {return 0;}
+  return Math.max(this.left.value ? this.left.getHeight() : 0, this.right.value ? this.right.getHeight() : 0) + 1;
+}
+
+BinarySearchTree.prototype.isBalanced = function() {
+  if (this === null) {return 0;}
+  let difference = Math.abs(this.left.getHeight() - this.right.getHeight());
+  if (difference > 1) {
+    return false;
+  } else {
+    return this.left.isBalanced() && this.right.isBalanced();
+  }
+};
+
 
 
 /*
